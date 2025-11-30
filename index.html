@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chá de Bebê da Laura 💗</title>
+
+  <style>
+    body {
+      background: linear-gradient(to bottom, #ffe6f2, #ffd1e8);
+      margin: 0;
+      font-family: "Comic Sans MS", Arial, sans-serif;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      margin-top: 30px;
+      font-size: 40px;
+      color: #ff77b4;
+      text-shadow: 0 0 10px #ffb3d9;
+      animation: fadeIn 2s ease;
+    }
+
+    .sub {
+      color: #ff8fc7;
+      font-size: 20px;
+      animation: fadeIn 2.5s ease;
+    }
+
+    /* Coração */
+    .heart {
+      font-size: 120px;
+      cursor: pointer;
+      margin-top: 60px;
+      animation: beat 1s infinite, float 4s ease-in-out infinite;
+      filter: drop-shadow(0 0 15px #ff99cc);
+    }
+
+    @keyframes beat {
+      0% { transform: scale(1); }
+      25% { transform: scale(1.15); }
+      40% { transform: scale(1); }
+      60% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* Mensagem */
+    .msg {
+      font-size: 22px;
+      color: #d84b8b;
+      margin-top: 20px;
+      animation: fadeIn 2.5s ease;
+    }
+
+    /* Vídeo */
+    #videoContainer {
+      display: none;
+      margin-top: 20px;
+      animation: fadeIn 1s ease;
+    }
+
+    iframe {
+      width: 300px;
+      height: 530px;
+      border-radius: 25px;
+      border: 4px solid #ffb3d9;
+      box-shadow: 0 0 20px #ff9fcf;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Corações flutuando no fundo */
+    .floating-heart {
+      position: fixed;
+      color: #ff99cc80;
+      animation: floatUp 6s linear infinite;
+      font-size: 25px;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(100vh); opacity: 0; }
+      20% { opacity: 1; }
+      100% { transform: translateY(-10vh); opacity: 0; }
+    }
+
+    /* --- RESPONSIVIDADE PARA CELULAR --- */
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 30px;
+        margin-top: 20px;
+      }
+
+      .sub {
+        font-size: 18px;
+        padding: 0 10px;
+      }
+
+      .heart {
+        font-size: 90px;
+        margin-top: 40px;
+      }
+
+      .msg {
+        font-size: 18px;
+        padding: 0 15px;
+      }
+
+      iframe {
+        width: 90vw;
+        height: 70vh;
+        border-radius: 20px;
+      }
+    }
+
+    /* Para tablets */
+    @media (max-width: 768px) {
+      iframe {
+        width: 380px;
+        height: 600px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <h1>Chá de Bebê da Laura 💗</h1>
+  <p class="sub">Clique no coração para ouvir o batimentozinho dela 💕</p>
+
+  <div class="heart" id="heart">❤️</div>
+
+  <p class="msg" id="msg">Aperte o coração da nossa princesinha 💞</p>
+
+  <div id="videoContainer">
+   <iframe src="https://drive.google.com/file/d/1sfoCvTughlAA1vxL0QVr3szXvbA6XiYz/view?usp=sharing"
+        width="100%"
+        height="400"
+        allow="autoplay"
+        allowfullscreen>
+</iframe>
+
+  </div>
+
+  <script>
+    const heart = document.getElementById("heart");
+    const videoContainer = document.getElementById("videoContainer");
+    const msg = document.getElementById("msg");
+
+    heart.addEventListener("click", () => {
+      heart.style.display = "none";
+      msg.style.display = "none";
+      videoContainer.style.display = "block";
+    });
+
+    // Criar corações flutuantes no fundo
+    function createFloatingHearts() {
+      for (let i = 0; i < 15; i++) {
+        let heart = document.createElement("div");
+        heart.className = "floating-heart";
+        heart.textContent = "💗";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDelay = Math.random() * 4 + "s";
+        heart.style.fontSize = (20 + Math.random() * 25) + "px";
+        document.body.appendChild(heart);
+      }
+    }
+
+    createFloatingHearts();
+  </script>
+
+</body>
+</html>
